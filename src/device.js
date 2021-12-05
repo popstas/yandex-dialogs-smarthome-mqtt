@@ -51,7 +51,7 @@ class device {
   // принимает capability.state, возвращает capability
   setState(capability) {
     let int, topic;
-    const deviceCapability = this.getCapabilityByType(capability.type);
+    const deviceCapability = this.getCapabilityByInstance(capability.state.instance);
     deviceCapability.state.value = capability.state.value;
 
     switch(capability.state.instance) {
