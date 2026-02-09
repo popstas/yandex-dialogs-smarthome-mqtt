@@ -10,9 +10,25 @@ router.get('/auth', (req, res) => {
     '<a style="display:block; text-align:center; background:#7b3dcc; color:#fff; cursor:pointer; font-family:Arial,sans-serif; font-size:20px; padding:13px 16px; border-radius:6px; text-decoration:none;" href="' + req.query.redirect_uri + '?code=test123&state=' + req.query.state + '">Подключить умный дом</a>');
 });
 
+const VALID_REFRESH_TOKEN = 'refresh123456789';
+
 router.post('/token', (req, res) => {
   console.log('/auth/token', req.body);
-  res.send({ "access_token": "acceess123456789", "token_type": "bearer", "expires_in": 2592000, "refresh_token": "refresh123456789" });
+  const { grant_type, refresh_token } = req.body || {};
+
+  if (grant_type === 'refresh_token') {
+    if (!refresh_token || refresh_token !== VALID_REFRESH_TOKEN) {
+      return res.status(400).json({ error: 'invalid_grant' });
+    }
+    return res.json({
+      access_token: 'acceess123456789',
+      token_type: 'bearer',
+      expires_in: 2592000,
+      refresh_token: VALID_REFRESH_TOKEN
+    });
+  }
+
+  res.send({ access_token: 'acceess123456789', token_type: 'bearer', expires_in: 2592000, refresh_token: VALID_REFRESH_TOKEN });
 });
 
 module.exports = router;
