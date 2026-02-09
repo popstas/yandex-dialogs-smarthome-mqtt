@@ -114,13 +114,19 @@ if (global.statPairs) {
             val = ['on', '1', 'true'].includes(message.toString().toLowerCase());
             break;
 
-          case 'temperature':
-          case 'volume':
-          case 'humidity':
           case 'amperage':
           case 'battery_level':
           case 'co2_level':
+          case 'humidity':
+          case 'illumination':
+          case 'pm1_density':
+          case 'pm2.5_density':
+          case 'pm10_density':
           case 'power':
+          case 'pressure':
+          case 'temperature':
+          case 'tvoc':
+          case 'volume':
           case 'voltage':
           case 'water_level':
             val = parseFloat(message.toString());
