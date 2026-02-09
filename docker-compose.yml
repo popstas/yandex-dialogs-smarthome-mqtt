@@ -10,5 +10,6 @@ services:
     volumes:
       - $PWD/src/:/app/src/
       - $PWD/data/:/app/data/
+      - $PWD/config/:/app/config
     ports:
       - 5554:5554
