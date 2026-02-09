@@ -24,6 +24,8 @@ router.get('/v1.0/user/devices', (req, res) => {
   for (let device of global.devices) {
     r.payload.devices.push(device.getInfo());
   }
+  // r.payload.devices = r.payload.devices.slice(0, 31);
+  // console.log('r.payload.devices.length: ', r.payload.devices.length);
   res.send(r);
 });
 
