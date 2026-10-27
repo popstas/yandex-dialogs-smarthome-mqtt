@@ -1,0 +1,12 @@
+# секреты и локальные данные монтируются томами (config/, data/, src/), в образ не кладём
+.git
+.idea
+.vscode
+config/
+data/
+src/config.js*
+node_modules
+test/
+*.log
+.env*
+docker-compose.yml
